@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Mini Wiki</title>
+</head>
+<body>
+    <label class="switch" id="mode-toggle-container">
+        <input type="checkbox" id="mode-toggle">
+        <span class="slider round"></span>
+    </label>
+    <div class="container">
+        <header id="title">Mini Wiki</header>
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Search...">
+            <input type="text" id="search-input" style="display: none;">
+            <button id="search-button">Search</button>
+            <button id="new-button">Show all Websites</button>
+        </div>
+        <div class="search-results"></div>
+    </div>
+    <footer>&copy; 2023 Mini Wiki</footer>
+    <script src="/JS/index.js"></script>
+</body>
+</html>
