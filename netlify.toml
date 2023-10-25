@@ -1,0 +1,6 @@
+[build]
+functions = "your-app"  # Directory containing serverless functions
+publish = "public"      # Directory to deploy, if you have static files
+
+[dev]
+port = 3000
