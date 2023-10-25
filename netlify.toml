@@ -1,6 +1,4 @@
 [build]
-functions = "server.js"  # Directory containing serverless functions
-publish = "public"      # Directory to deploy, if you have static files
+functions = "server.js"  
+publish = "public"      
 
-[dev]
-port = 3000
