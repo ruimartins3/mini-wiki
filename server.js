@@ -1,4 +1,5 @@
 const express = require('express');
+const serveless = require('serverless-http');
 const app = express();
 const port = process.env.PORT || 3000;
 const path = require('path');
@@ -113,3 +114,4 @@ function searchWiki(query, wiki) {
 
 
 
+module.exports.handler = serveless(app)
