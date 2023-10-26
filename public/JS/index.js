@@ -58,7 +58,6 @@ document.getElementById("search-button").addEventListener("click", () => {
         });
 });
 
-// Event listener for the "Show all Websites" button
 document.getElementById("new-button").addEventListener("click", () => {
     const query = "all";
     fetch(`/search?query=${query}`)

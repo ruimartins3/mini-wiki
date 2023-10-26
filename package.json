@@ -2,9 +2,9 @@
   "name": "search-algorithm",
   "version": "1.0.0",
   "description": "Your project description",
-  "main": "server.js", 
+  "main": "server.js",
   "scripts": {
-    "start": "node server.js" 
+    "start": "node server.js"
   },
   "author": "Your Name",
   "license": "ISC",
