@@ -1,5 +1,4 @@
 const express = require('express');
-const serveless = require('serverless-http');
 const app = express();
 const port = process.env.PORT || 3000;
 const path = require('path');
@@ -75,8 +74,7 @@ const wiki = {
     },
 };
 
-
-app.use(express.static('public')); 
+app.use(express.static('public'));
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'index.html'));
@@ -85,7 +83,7 @@ app.get('/', (req, res) => {
 app.get('/search', (req, res) => {
     const query = req.query.query;
     let searchResults;
-    
+
     if (query === "all") {
         searchResults = Object.entries(wiki).map(([title, content]) => ({
             titulo: title,
@@ -95,23 +93,10 @@ app.get('/search', (req, res) => {
     } else {
         searchResults = searchWiki(query, wiki);
     }
-    
+
     res.json(searchResults);
 });
-
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
-
-function searchWiki(query, wiki) {
-    query = query.toLowerCase();
-    const results = Object.entries(wiki).filter(([title, content]) => {
-        return title.toLowerCase().includes(query) || content.description.toLowerCase().includes(query);
-    }).map(([title, content]) => ({ titulo: title, content: content.description, url: content.url }));
-    return results;
-}
-
-
-
-module.exports.handler = serveless(app)
