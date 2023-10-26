@@ -1,4 +1,3 @@
 [build]
-command = "node server.js"
+functions = "server.js"
 publish = "public"
-functions = "lambda"
