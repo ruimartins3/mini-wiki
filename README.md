@@ -7,7 +7,7 @@
 <a href="https://developer.mozilla.org/en-US/docs/Glossary/HTML5" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/html5-colored.svg" width="36" height="36" alt="HTML5" /></a> 
 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/css3-colored.svg" width="36" height="36" alt="CSS3" /></a>
 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/javascript-colored.svg" width="36" height="36" alt="JavaScript" /></a> &nbsp;
-<a href="https://expressjs.com/" target="_blank" rel="noreferrer"><img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flearncybers.com%2Fwp-content%2Fuploads%2F2019%2F09%2Fexpress-js-1.jpeg&f=1&nofb=1&ipt=2235f6f466bb57253cf07ef951bf1c120d4d429f7561086ffa6635a3dfdb5044&ipo=images" width="50" height="30" alt="Express" /></a>
+<a href="https://expressjs.com/" target="_blank" rel="noreferrer"><img src="https://ourcodeworld.com/public-media/articles/articleocw-57e57b89889ad.png" width="50" height="30" alt="Express" /></a>
 
   
   
