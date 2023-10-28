@@ -184,3 +184,40 @@ footer {
 #title:hover {
     cursor: pointer;
 }
+
+
+/* Media query for screens up to 1125px (iPhone 11 Pro) */
+@media (max-width: 1125px) {
+    body {
+        font-size: 16px; 
+    }
+
+    .container {
+        max-width: 100%;
+        padding: 10px; 
+    } 
+}
+
+
+
+@media (max-width: 768px) {
+    body {
+        font-size: 16px; 
+    }
+
+    .container {
+        max-width: 100%; 
+        padding: 10px; 
+    }
+}
+
+@media (max-width: 1125px) {
+    body {
+        font-size: 16px; 
+    }
+
+    .container {
+        max-width: 100%;
+        padding: 10px; 
+    } 
+}
