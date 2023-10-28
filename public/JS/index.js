@@ -21,7 +21,8 @@ const websiteTitles = [
     "Reddit",
     "WhatsApp",
     "Yahoo",
-    "Shein"
+    "Shein",
+    "GGdeals"
 ];
 
 

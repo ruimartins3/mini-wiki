@@ -76,6 +76,10 @@ const wiki = {
     "Shein": {
         url: "https://pt.shein.com/",
         description: "Shein is a global online merchant that offers trendy clothing, shoes, accessories, and homegoods at low prices."
+    },
+    "GG Deals": {
+        url: "https://gg.deals/",
+        description: "Deals section showcases all of the best and most recently discounted games game discounts pc game offers in terms of discount and popularity ratio."
     }
 };
 
