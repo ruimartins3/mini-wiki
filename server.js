@@ -92,15 +92,19 @@ module.exports = async (req, res) => {
 };
 
 function searchWiki(query, wiki) {
-    query = query.toLowerCase();
+    console.log('Query:', query);
     const results = Object.entries(wiki).filter(([title, content]) => {
         if (title && content && content.description) {
+            console.log('Title:', title);
+            console.log('Description:', content.description);
             return title.toLowerCase().includes(query) || content.description.toLowerCase().includes(query);
         }
         return false; 
     }).map(([title, content]) => ({ titulo: title, content: content.description, url: content.url }));
+    console.log('Results:', results);
     return results;
 }
+
 
 
 
