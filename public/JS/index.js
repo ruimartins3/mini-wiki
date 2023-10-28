@@ -45,6 +45,7 @@ document.getElementById("search-button").addEventListener("click", () => {
     const placeholders = ["your_placeholder1", "your_placeholder2", "your_placeholder3"];
 
     if (query === "" || placeholders.includes(query)) {
+        displaySearchResults([]); 
         return;
     }
 
