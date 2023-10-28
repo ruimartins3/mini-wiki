@@ -72,17 +72,7 @@ const wiki = {
 module.exports = async (req, res) => {
     if (req.method === 'GET') {
         const query = req.query.query;
-        let searchResults;
-
-        if (query === "all") {
-            searchResults = Object.entries(wiki).map(([title, content]) => ({
-                titulo: title,
-                content: content.description,
-                url: content.url
-            }));
-        } else {
-            searchResults = searchWiki(query, wiki);
-        }
+        const searchResults = searchWiki(query, wiki);
 
         res.setHeader('Content-Type', 'application/json');
         res.status(200).send(JSON.stringify(searchResults));
@@ -92,13 +82,9 @@ module.exports = async (req, res) => {
 };
 
 function searchWiki(query, wiki) {
-    if (!query) {
-        return [];
-    }
-
     query = query.toLowerCase();
-
-    if (!wiki || typeof wiki !== 'object') {
+    
+    if (query.trim() === "") {
         return [];
     }
 
@@ -108,9 +94,10 @@ function searchWiki(query, wiki) {
         }
         return false;
     }).map(([title, content]) => ({ titulo: title, content: content.description, url: content.url }));
-
+    
     return results;
 }
+
 
 
 

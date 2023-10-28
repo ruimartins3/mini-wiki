@@ -74,6 +74,7 @@ document.getElementById("new-button").addEventListener("click", () => {
 function displaySearchResults(searchResults) {
     const searchResultsContainer = document.querySelector(".search-results");
     searchResultsContainer.innerHTML = "";
+
     if (searchResults.length > 0) {
         searchResults.forEach(result => {
             const resultDiv = document.createElement("div");
