@@ -1,6 +1,4 @@
-
-
-{
+{   
     "version": 2,
     "builds": [
         {
@@ -10,8 +8,8 @@
     ],
     "routes": [
         {
-            "src": "src/index.js",
-            "use": "@vercel/static"
+            "src": "/(.*)",
+            "dest": "/"
         }
     ]
 }
