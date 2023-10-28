@@ -1,3 +1,9 @@
+const express = require('express');
+const serveless = require('serverless-http');
+const app = express();
+const port = process.env.PORT || 3000;
+const path = require('path');
+
 const wiki = {
     "Google": {
         url: "https://www.google.com",
@@ -69,54 +75,43 @@ const wiki = {
     },
 };
 
-module.exports = async (req, res) => {
-    if (req.method === 'GET') {
-        const query = req.query.query;
-        let searchResults;
 
-        if (query === "all") {
-            searchResults = Object.entries(wiki).map(([title, content]) => ({
-                titulo: title,
-                content: content.description,
-                url: content.url
-            }));
-        } else {
-            searchResults = searchWiki(query, wiki);
-        }
+app.use(express.static('public')); 
 
-        res.setHeader('Content-Type', 'application/json');
-        res.status(200).send(JSON.stringify(searchResults));
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'index.html'));
+});
+
+app.get('/search', (req, res) => {
+    const query = req.query.query;
+    let searchResults;
+    
+    if (query === "all") {
+        searchResults = Object.entries(wiki).map(([title, content]) => ({
+            titulo: title,
+            content: content.description,
+            url: content.url
+        }));
     } else {
-        res.status(404).end('Not Found');
+        searchResults = searchWiki(query, wiki);
     }
-};
+    
+    res.json(searchResults);
+});
 
+
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+});
 
 function searchWiki(query, wiki) {
-    console.log(query, wiki);
-    if (!query) {
-        return [];
-    }
-
     query = query.toLowerCase();
-
-    if (!wiki || typeof wiki !== 'object') {
-        return [];
-    }
-
     const results = Object.entries(wiki).filter(([title, content]) => {
-        if (title && content && content.description) {
-            return title.toLowerCase().includes(query) || content.description.toLowerCase().includes(query);
-        }
-        return false;
+        return title.toLowerCase().includes(query) || content.description.toLowerCase().includes(query);
     }).map(([title, content]) => ({ titulo: title, content: content.description, url: content.url }));
-
     return results;
 }
 
 
 
-
-
-
-
+module.exports.handler = serveless(app)
