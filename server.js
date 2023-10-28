@@ -92,12 +92,17 @@ module.exports = async (req, res) => {
 };
 
 function searchWiki(query, wiki) {
-    query = query.toLowerCase();
-    const results = Object.entries(wiki).filter(([title, content]) => {
-        return title.toLowerCase().includes(query) || content.description.toLowerCase().includes(query);
-    }).map(([title, content]) => ({ titulo: title, content: content.description, url: content.url }));
-    return results;
+    if (query) {
+        query = query.toLowerCase();
+        const results = Object.entries(wiki).filter(([title, content]) => {
+            return title.toLowerCase().includes(query) || content.description.toLowerCase().includes(query);
+        }).map(([title, content]) => ({ titulo: title, content: content.description, url: content.url }));
+        return results;
+    } else {
+        return [];
+    }
 }
+
 
 
 
