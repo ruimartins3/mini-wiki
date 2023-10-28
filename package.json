@@ -10,7 +10,7 @@
     "start": "node server.js",
     "build": "npm install"
   },
-  "author": "Your Name",
+  "author": "Rui Martins",
   "license": "ISC",
   "dependencies": {
     "@netlify/functions": "^2.3.0",
