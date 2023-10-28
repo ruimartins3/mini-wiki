@@ -93,6 +93,7 @@ module.exports = async (req, res) => {
 
 
 function searchWiki(query, wiki) {
+    console.log(query, wiki);
     if (!query) {
         return [];
     }
