@@ -91,7 +91,6 @@ module.exports = async (req, res) => {
     }
 };
 
-app.listen(3000);
 
 function searchWiki(query, wiki) {
     if (!query) {
