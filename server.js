@@ -22,7 +22,7 @@ const wiki = {
         description: "Instagram is a photo and video sharing social networking service.",
     },
     "X": {
-        url: "https://www.example.com/x",
+        url: "https://twitter.com/",
         description: "X is an online social media and social networking service that allows users to post texts, images, and videos.",
     },
     "Netflix": {
