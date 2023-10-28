@@ -1,4 +1,37 @@
 const wiki = {
+    // Your wiki data here
+};
+
+module.exports = async (req, res) => {
+    if (req.method === 'GET') {
+        const query = req.query.query;
+        const searchResults = searchWiki(query, wiki);
+
+        res.setHeader('Content-Type', 'application/json');
+        res.status(200).send(JSON.stringify(searchResults));
+    } else {
+        res.status(404).end('Not Found');
+    }
+};
+
+function searchWiki(query, wiki) {
+    query = query.toLowerCase();
+    
+    if (query.trim() === "") {
+        return [];
+    }
+
+    const results = Object.entries(wiki).filter(([title, content]) => {
+        if (title && content && content.description) {
+            return title.toLowerCase().includes(query) || content.description.toLowerCase().includes(query);
+        }
+        return false;
+    }).map(([title, content]) => ({ titulo: title, content: content.description, url: content.url }));
+    
+    return results;
+}
+
+const wiki = {
     "Google": {
         url: "https://www.google.com",
         description: "Google is a popular search engine that can help you find information on the web.",
@@ -72,7 +105,17 @@ const wiki = {
 module.exports = async (req, res) => {
     if (req.method === 'GET') {
         const query = req.query.query;
-        const searchResults = searchWiki(query, wiki);
+        let searchResults;
+
+        if (query === "all") {
+            searchResults = Object.entries(wiki).map(([title, content]) => ({
+                titulo: title,
+                content: content.description,
+                url: content.url
+            }));
+        } else {
+            searchResults = searchWiki(query, wiki);
+        }
 
         res.setHeader('Content-Type', 'application/json');
         res.status(200).send(JSON.stringify(searchResults));
@@ -81,10 +124,16 @@ module.exports = async (req, res) => {
     }
 };
 
+
+
 function searchWiki(query, wiki) {
+    if (!query) {
+        return [];
+    }
+
     query = query.toLowerCase();
-    
-    if (query.trim() === "") {
+
+    if (!wiki || typeof wiki !== 'object') {
         return [];
     }
 
@@ -94,10 +143,9 @@ function searchWiki(query, wiki) {
         }
         return false;
     }).map(([title, content]) => ({ titulo: title, content: content.description, url: content.url }));
-    
+
     return results;
 }
-
 
 
 
