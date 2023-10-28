@@ -69,10 +69,8 @@ const wiki = {
     },
 };
 
-module.exports = (req, res) => {
-    const { pathname } = new URL(req.url, 'http://localhost:3000');
-
-    if (pathname === '/search' && req.method === 'GET') {
+module.exports = async (req, res) => {
+    if (req.method === 'GET') {
         const query = req.query.query;
         let searchResults;
 
@@ -87,9 +85,9 @@ module.exports = (req, res) => {
         }
 
         res.setHeader('Content-Type', 'application/json');
-        res.status(200).end(JSON.stringify(searchResults));
+        res.status(200).send(JSON.stringify(searchResults));
     } else {
-        // Handle other routes as needed
+        // Handle other HTTP methods or routes as needed
         res.status(404).end('Not Found');
     }
 };
@@ -101,5 +99,7 @@ function searchWiki(query, wiki) {
     }).map(([title, content]) => ({ titulo: title, content: content.description, url: content.url }));
     return results;
 }
+
+
 
 
