@@ -73,6 +73,10 @@ const wiki = {
         url: "https://www.yahoo.com",
         description: "Yahoo is a web services provider, offering news, email, and search functionality.",
     },
+    "Shein": {
+        url: "https://pt.shein.com/",
+        description: "Shein is a global online merchant that offers trendy clothing, shoes, accessories, and homegoods at low prices."
+    }
 };
 
 
