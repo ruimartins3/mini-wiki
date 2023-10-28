@@ -76,6 +76,17 @@ const wiki = {
 };
 
 
+app.get('/styles.css', (req, res) => {
+    res.set('Content-Type', 'text/css');
+    res.sendFile(__dirname + '/public/styles.css');
+});
+
+app.get('/JS/index.js', (req, res) => {
+    res.set('Content-Type', 'application/javascript');
+    res.sendFile(__dirname + '/public/JS/index.js');
+});
+
+
 app.use(express.static('public')); 
 
 app.get('/', (req, res) => {
