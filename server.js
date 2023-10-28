@@ -92,9 +92,13 @@ module.exports = async (req, res) => {
 };
 
 function searchWiki(query, wiki) {
+    if (!query) {
+        return [];
+    }
+
     query = query.toLowerCase();
-    
-    if (query.trim() === "") {
+
+    if (!wiki || typeof wiki !== 'object') {
         return [];
     }
 
@@ -104,9 +108,10 @@ function searchWiki(query, wiki) {
         }
         return false;
     }).map(([title, content]) => ({ titulo: title, content: content.description, url: content.url }));
-    
+
     return results;
 }
+
 
 
 
