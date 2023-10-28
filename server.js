@@ -79,7 +79,7 @@ const wiki = {
     },
     "GG Deals": {
         url: "https://gg.deals/",
-        description: "Deals section showcases all of the best and most recently discounted games game discounts pc game offers in terms of discount and popularity ratio."
+        description: "Deals section showcases all of the best and most recently discounted games discounts."
     }
 };
 
