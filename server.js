@@ -1,9 +1,3 @@
-const express = require('express');
-const serveless = require('serverless-http');
-const app = express();
-const port = process.env.PORT || 3000;
-const path = require('path');
-
 const wiki = {
     "Google": {
         url: "https://www.google.com",
@@ -75,34 +69,30 @@ const wiki = {
     },
 };
 
+module.exports = (req, res) => {
+    const { pathname } = new URL(req.url, 'http://localhost:3000');
 
-app.use(express.static('public')); 
+    if (pathname === '/search' && req.method === 'GET') {
+        const query = req.query.query;
+        let searchResults;
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'index.html'));
-});
+        if (query === "all") {
+            searchResults = Object.entries(wiki).map(([title, content]) => ({
+                titulo: title,
+                content: content.description,
+                url: content.url
+            }));
+        } else {
+            searchResults = searchWiki(query, wiki);
+        }
 
-app.get('/search', (req, res) => {
-    const query = req.query.query;
-    let searchResults;
-    
-    if (query === "all") {
-        searchResults = Object.entries(wiki).map(([title, content]) => ({
-            titulo: title,
-            content: content.description,
-            url: content.url
-        }));
+        res.setHeader('Content-Type', 'application/json');
+        res.status(200).end(JSON.stringify(searchResults));
     } else {
-        searchResults = searchWiki(query, wiki);
+        // Handle other routes as needed
+        res.status(404).end('Not Found');
     }
-    
-    res.json(searchResults);
-});
-
-
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-});
+};
 
 function searchWiki(query, wiki) {
     query = query.toLowerCase();
@@ -113,5 +103,3 @@ function searchWiki(query, wiki) {
 }
 
 
-
-module.exports.handler = serveless(app)
