@@ -8,7 +8,7 @@ const websiteTitles = [
     "Youtube",
     "Facebook",
     "Instagram",
-    "X",
+    "Twitter",
     "Netflix",
     "Wikipedia",
     "Amazon",

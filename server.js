@@ -21,9 +21,9 @@ const wiki = {
         url: "https://www.instagram.com",
         description: "Instagram is a photo and video sharing social networking service.",
     },
-    "X": {
+    "Twitter": {
         url: "https://twitter.com/",
-        description: "X is an online social media and social networking service that allows users to post texts, images, and videos.",
+        description: "Twitter is an online social media and social networking service that allows users to post texts, images, and videos.",
     },
     "Netflix": {
         url: "https://www.netflix.com",
